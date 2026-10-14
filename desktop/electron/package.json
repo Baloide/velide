@@ -1,0 +1,52 @@
+{
+  "name": "velide-desktop",
+  "version": "1.0.0",
+  "description": "Local document de-identification by Baloide",
+  "author": "Baloide",
+  "license": "UNLICENSED",
+  "private": true,
+  "main": "main.cjs",
+  "scripts": {
+    "start": "electron .",
+    "package": "electron-builder --win nsis --x64 --publish never"
+  },
+  "devDependencies": {
+    "electron": "44.7.2",
+    "electron-builder": "26.15.3"
+  },
+  "build": {
+    "appId": "org.baloide.velide",
+    "productName": "Velide",
+    "copyright": "Copyright © 2026 Baloide",
+    "directories": {
+      "output": "../../dist/electron",
+      "buildResources": "../assets"
+    },
+    "files": [
+      "main.cjs",
+      "package.json"
+    ],
+    "extraResources": [
+      {
+        "from": "../../build/service/VelideService.exe",
+        "to": "backend/VelideService.exe"
+      }
+    ],
+    "win": {
+      "icon": "../assets/velide.ico",
+      "target": [
+        "nsis"
+      ]
+    },
+    "nsis": {
+      "artifactName": "Velide-Setup.exe",
+      "oneClick": true,
+      "perMachine": false,
+      "allowElevation": false,
+      "createDesktopShortcut": "always",
+      "createStartMenuShortcut": true,
+      "shortcutName": "Velide",
+      "deleteAppDataOnUninstall": false
+    }
+  }
+}

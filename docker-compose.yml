@@ -1,0 +1,12 @@
+services:
+  clinical-redactor:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    container_name: baloide-clinical-redactor
+    restart: unless-stopped
+    ports:
+      - "127.0.0.1:8000:8000"
+    environment:
+      - HOST=0.0.0.0
+      - PORT=8000
